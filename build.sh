@@ -18,7 +18,7 @@ for dir in */; do
   echo "=== Building $name -> $slug ==="
 
   cd "$name"
-  npm install
+  npm ci
   npx vite build --base="/$REPO_NAME/$slug/"
   cd ..
 

@@ -9,7 +9,8 @@ const T = TILE_SIZE;
 function toW(px: number) { return px / T; }
 
 // Preload the GLTF boar model
-useGLTF.preload("/models/boar.glb");
+const boarModelPath = `${import.meta.env.BASE_URL}models/boar.glb`;
+useGLTF.preload(boarModelPath);
 
 // ── GLTF Boar ─────────────────────────────────────────────────────────────
 
@@ -21,7 +22,7 @@ interface BoarGLTFProps {
 }
 
 function BoarGLTF({ groupRef, isMoving, isSprinting, isMuddy }: BoarGLTFProps) {
-  const { scene, animations } = useGLTF("/models/boar.glb");
+  const { scene, animations } = useGLTF(boarModelPath);
   const { actions, names } = useAnimations(animations, groupRef as MutableRefObject<THREE.Object3D>);
 
   // Tint all meshes dark brown to look like a boar
