@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap');
+
+/* Wild Boar Life Simulator – Earthy Forest Design System */
+
+@layer base {
+  :root {
+    /* Backgrounds */
+    --background: 27 20% 8%;
+    --foreground: 42 60% 88%;
+
+    --card: 28 25% 12%;
+    --card-foreground: 42 60% 88%;
+
+    --popover: 28 25% 12%;
+    --popover-foreground: 42 60% 88%;
+
+    /* Primary – warm amber/gold for UI accents */
+    --primary: 36 90% 52%;
+    --primary-foreground: 27 20% 8%;
+
+    /* Secondary – forest green */
+    --secondary: 120 35% 22%;
+    --secondary-foreground: 42 60% 88%;
+
+    --muted: 28 18% 18%;
+    --muted-foreground: 42 30% 55%;
+
+    --accent: 15 60% 40%;
+    --accent-foreground: 42 60% 88%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 42 60% 88%;
+
+    --border: 28 20% 20%;
+    --input: 28 20% 20%;
+    --ring: 36 90% 52%;
+
+    --radius: 0.25rem;
+
+    /* Sidebar */
+    --sidebar-background: 28 25% 10%;
+    --sidebar-foreground: 42 60% 88%;
+    --sidebar-primary: 36 90% 52%;
+    --sidebar-primary-foreground: 27 20% 8%;
+    --sidebar-accent: 28 18% 18%;
+    --sidebar-accent-foreground: 42 60% 88%;
+    --sidebar-border: 28 20% 20%;
+    --sidebar-ring: 36 90% 52%;
+
+    /* Game-specific tokens */
+    --health-bar: 0 72% 51%;
+    --hunger-bar: 36 90% 52%;
+    --thirst-bar: 210 70% 50%;
+    --stamina-bar: 120 60% 40%;
+
+    --hud-bg: 27 20% 6%;
+    --hud-border: 36 40% 30%;
+
+    --forest-dark: 120 35% 8%;
+    --forest-mid: 120 35% 14%;
+    --mud-brown: 28 45% 28%;
+    --amber-glow: 36 90% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'VT323', monospace;
+    overflow: hidden;
+    user-select: none;
+  }
+}
+
+/* Pixel font for headings */
+.font-pixel {
+  font-family: 'Press Start 2P', monospace;
+}
+
+.font-vt {
+  font-family: 'VT323', monospace;
+}
+
+/* Scanline overlay effect */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Stat bar animations */
+@keyframes pulse-low {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.stat-low {
+  animation: pulse-low 0.8s ease-in-out infinite;
+}
+
+/* Night vignette */
+.night-vignette {
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.85) 100%);
+}
+
+/* CRT glow on canvas */
+.game-canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}

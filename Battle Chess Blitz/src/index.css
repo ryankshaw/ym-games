@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Share+Tech+Mono&display=swap');
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 20% 6%;
+    --foreground: 45 80% 85%;
+
+    --card: 220 20% 9%;
+    --card-foreground: 45 80% 85%;
+
+    --popover: 220 20% 9%;
+    --popover-foreground: 45 80% 85%;
+
+    --primary: 45 85% 55%;
+    --primary-foreground: 220 20% 6%;
+
+    --secondary: 220 15% 14%;
+    --secondary-foreground: 45 60% 75%;
+
+    --muted: 220 15% 14%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 0 85% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 14%;
+    --ring: 45 85% 55%;
+
+    --radius: 0.5rem;
+
+    /* Game-specific tokens */
+    --gold: 45 85% 55%;
+    --gold-dark: 38 70% 35%;
+    --gold-glow: 45 100% 70%;
+    --board-light: 38 60% 75%;
+    --board-dark: 220 25% 22%;
+    --fps-red: 0 85% 55%;
+    --fps-green: 120 70% 45%;
+    --fps-hud: 120 80% 50%;
+    --battle-bg: 220 25% 5%;
+
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 45 60% 75%;
+    --sidebar-primary: 45 85% 55%;
+    --sidebar-primary-foreground: 220 20% 6%;
+    --sidebar-accent: 220 15% 14%;
+    --sidebar-accent-foreground: 45 60% 75%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 45 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cinzel', serif;
+  }
+}
+
+/* Game animations */
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 8px hsl(var(--gold) / 0.6); }
+  50% { box-shadow: 0 0 24px hsl(var(--gold) / 1), 0 0 48px hsl(var(--gold) / 0.4); }
+}
+
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 8px hsl(var(--fps-red) / 0.6); }
+  50% { box-shadow: 0 0 24px hsl(var(--fps-red) / 1), 0 0 48px hsl(var(--fps-red) / 0.4); }
+}
+
+@keyframes battle-flash {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes crosshair-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+}
+
+@keyframes hit-flash {
+  0% { background: hsl(var(--fps-red) / 0.8); }
+  100% { background: transparent; }
+}
+
+@keyframes enemy-spawn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-pulse-gold { animation: pulse-gold 2s infinite; }
+.animate-pulse-red { animation: pulse-red 2s infinite; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.font-chess { font-family: 'Cinzel', serif; }
+.font-fps { font-family: 'Share Tech Mono', monospace; }
